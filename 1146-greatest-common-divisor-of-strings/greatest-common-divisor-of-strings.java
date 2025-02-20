@@ -3,11 +3,16 @@ class Solution {
         if (!(str1 + str2).equals(str2 + str1)) {
             return "";
         }
-        int gcdLength = gcd(str1.length(), str2.length());
+        int gcdLength = 0;
+        int i = str1.length(); 
+        int j = str2.length();
+        while (j != 0) {
+            int temp = j;
+            j = i % j;
+            i = temp;
+        }
+        gcdLength = i;
         return str1.substring(0, gcdLength);
 
-    }
-    private int gcd(int a, int b) {
-        return b == 0 ? a : gcd(b, a % b);
     }
 }
